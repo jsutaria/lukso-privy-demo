@@ -1,4 +1,5 @@
 import "../styles/globals.css";
+import { lukso } from "viem/chains";
 import type { AppProps } from "next/app";
 import Head from "next/head";
 import { PrivyProvider } from "@privy-io/react-auth";
@@ -40,7 +41,10 @@ function MyApp({ Component, pageProps }: AppProps) {
         <title>Privy Auth Starter</title>
         <meta name="description" content="Privy Auth Starter" />
       </Head>
-      <PrivyProvider appId={process.env.NEXT_PUBLIC_PRIVY_APP_ID || ""}>
+      <PrivyProvider
+        appId={process.env.NEXT_PUBLIC_PRIVY_APP_ID || ""}
+        config={{ defaultChain: lukso, supportedChains: [lukso] }}
+      >
         <Component {...pageProps} />
       </PrivyProvider>
     </>
